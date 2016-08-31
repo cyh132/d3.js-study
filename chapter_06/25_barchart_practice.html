@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3: Bar chart practice</title>
+		<script type="text/javascript" src="../d3/d3.js"></script>
+		<style type="text/css">
+
+			div.bar {
+				display: inline-block;
+				width: 40px;
+				height: 100px;
+				margin-right: 5px;
+				background-color: red;
+			}
+
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+			var dataset = [];
+			for (var i = 0; i < 40; i++) {
+				var newNumber = Math.random() * 100;
+				dataset.push(newNumber);
+			}
+
+			d3.select("body").selectAll("div")
+				.data(dataset)
+				.enter()
+				.append("div")
+				.attr("class", "bar")
+				.style("height", function(d) {
+					var barHeight = d * 3;
+					return barHeight + "px";
+				});
+
+		</script>
+	</body>
+</html>
+
+

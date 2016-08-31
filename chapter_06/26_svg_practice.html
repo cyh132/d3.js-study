@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3: SVG practice</title>
+		<script type="text/javascript" src="../d3/d3.js"></script>
+		<style type="text/css">
+
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var w = 800;
+			var h = 100;
+
+			var dataset = [];
+			for (var i = 0; i< 5; i++) {
+				var newNumber = Math.floor(Math.random() * 50);
+				dataset.push(newNumber);
+			}
+
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+
+			var circles = svg.selectAll("circle")
+					.data(dataset)
+					.enter()
+					.append("circle");
+
+			circles.attr("cx", function(d,i) {
+						return (i * 75) + 50;
+					})
+					.attr("cy", h/2)
+					.attr("r", function(d) {
+						return d;
+					})
+					.attr("fill","red");
+
+		</script>
+	</body>
+</html>
+
+
